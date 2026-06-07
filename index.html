@@ -1132,7 +1132,7 @@
 
   document.addEventListener('DOMContentLoaded', function () {
 
-    // Enter key to send in Ask mode
+    
     var inp = document.getElementById('askinput');
     if (inp) {
       inp.addEventListener('keydown', function (e) {
@@ -1140,13 +1140,13 @@
       });
     }
 
-    // Prevent body scroll bounce on iOS; only chatbox / welcome scroll
+    
     document.body.addEventListener('touchmove', function (e) {
       if (e.target.closest('#chatbox') || e.target.closest('#welcome')) return;
       e.preventDefault();
     }, { passive: false });
 
-    // Shrink layout when soft keyboard appears (Android / iOS)
+    
     if (window.visualViewport) {
       window.visualViewport.addEventListener('resize', function () {
         document.getElementById('app').style.height = window.visualViewport.height + 'px';
