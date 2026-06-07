@@ -10,7 +10,7 @@
   <title>SIHS Info Guide</title>
 
   <style>
-    /* ── Reset ── */
+
     *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
@@ -36,7 +36,7 @@
       left: 0;
     }
 
-    /* ── App shell ── */
+
     #app {
       display: flex;
       flex-direction: column;
@@ -46,9 +46,7 @@
       background: #031B30;
     }
 
-    /* ══════════════════════════
-       WELCOME SCREEN
-    ══════════════════════════ */
+
     #welcome {
       flex: 1;
       overflow-y: auto;
@@ -107,7 +105,7 @@
       padding: 4px 14px;
     }
 
-    /* Stats row */
+ 
     .stats {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -127,7 +125,7 @@
     .stat .lbl { font-size: 10px; color: #85B7EB; margin-bottom: 2px; }
     .stat .val { font-size: 13px; font-weight: 700; color: #E6F1FB; }
 
-    /* Section label */
+  
     .section-label {
       font-size: 11px;
       font-weight: 700;
@@ -137,7 +135,7 @@
       margin-bottom: 10px;
     }
 
-    /* Topic cards grid */
+
     .topic-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -166,7 +164,7 @@
     .tc .name { font-size: 13px; font-weight: 700; color: #E6F1FB; margin-bottom: 2px; }
     .tc .desc { font-size: 11px; color: #85B7EB; }
 
-    /* Full guide button */
+
     .start-btn {
       background: linear-gradient(135deg, #185FA5, #1a74cc);
       color: #E6F1FB;
@@ -192,9 +190,7 @@
       padding-bottom: 8px;
     }
 
-    /* ══════════════════════════
-       GUIDE SCREEN
-    ══════════════════════════ */
+
     #game {
       display: none;
       flex-direction: column;
@@ -203,7 +199,7 @@
       padding: env(safe-area-inset-top, 0px) 0 env(safe-area-inset-bottom, 0px);
     }
 
-    /* Header */
+  
     .ghead {
       background: #042C53;
       padding: 10px 14px;
@@ -282,7 +278,7 @@
       font-weight: 700;
     }
 
-    /* Progress bar */
+
     .prog-wrap { padding: 8px 14px 6px; flex-shrink: 0; }
 
     .prog-row {
@@ -307,7 +303,7 @@
       transition: width 0.4s;
     }
 
-    /* Chat messages */
+   
     #chatbox {
       flex: 1;
       overflow-y: auto;
@@ -375,7 +371,7 @@
       border-bottom-left-radius: 4px;
     }
 
-    /* Bottom zone — choices + ask panel */
+
     .bottom-zone {
       flex-shrink: 0;
       padding: 8px 12px 10px;
@@ -383,7 +379,7 @@
       border-top: 1px solid #0C2E4A;
     }
 
-    /* Pill choice buttons */
+
     #choices {
       display: flex;
       flex-wrap: wrap;
@@ -413,7 +409,7 @@
 
     .cbtn.back:active { background: #0C2E4A; }
 
-    /* Start / full-guide topic grid */
+
     #choices.start-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -435,7 +431,7 @@
     .card-lbl { font-size: 12px; font-weight: 700; color: #E6F1FB; }
     .card-sub { font-size: 10px; color: #85B7EB; }
 
-    /* Ask panel */
+
     #askpanel { display: none; }
 
     .askrow {
@@ -489,7 +485,7 @@
 <body>
 <div id="app">
 
-  <!-- ══ WELCOME SCREEN ══ -->
+
   <div id="welcome">
 
     <div class="hero">
@@ -550,10 +546,10 @@
     <button class="start-btn" onclick="startGame('start')">☰ Open full info guide</button>
     <p class="footer-note">Interactive school guide · SIHS 2025</p>
 
-  </div><!-- end #welcome -->
+  </div>
 
 
-  <!-- ══ GUIDE SCREEN ══ -->
+
   <div id="game">
 
     <div class="ghead">
@@ -599,15 +595,13 @@
       </div>
     </div>
 
-  </div><!-- end #game -->
+  </div>
 
-</div><!-- end #app -->
+</div>
 
 
 <script>
-  /* ══════════════════════════════════════════
-     LABELS — used for the progress tracker
-  ══════════════════════════════════════════ */
+
   var LABELS = {
     start              : 'Main menu',
     enroll_menu        : 'Enrollment',
@@ -641,12 +635,10 @@
   };
 
 
-  /* ══════════════════════════════════════════
-     TOPIC DATA — all nodes / screens
-  ══════════════════════════════════════════ */
+
   var T = {
 
-    /* ── Enrollment ── */
+
     enroll_menu: {
       b: "Great! Enrolling at SIHS is easy. What do you want to know about enrollment?",
       c: [
@@ -658,7 +650,7 @@
     },
 
     enroll_reqs: {
-      b: "To enroll at SIHS, you will need:\n\n✅ Form 137 (Report Card) from previous school\n✅ PSA Birth Certificate (original + photocopy)\n✅ Good Moral Certificate\n✅ 2 pcs 2x2 ID photos\n✅ Barangay Clearance\n\nFor transferees, also bring a Certificate of Transfer.",
+      b: "To enroll at SIHS, you will need:\n\n✅ Form 137 (Report Card) from previous school\n✅ PSA Birth Certificate (original + photocopy)\n✅ Good Moral Certificate\n\nFor transferees, also bring a Certificate of Transfer.",
       c: [
         { l: "📝 See the process",  n: "enroll_steps" },
         { l: "📅 When to enroll",   n: "enroll_when"  },
@@ -667,7 +659,7 @@
     },
 
     enroll_steps: {
-      b: "Here's the SIHS enrollment process:\n\n1️⃣ Visit the Registrar's Office & get a form\n2️⃣ Fill out the form and attach your requirements\n3️⃣ Submit to the Registrar for assessment\n4️⃣ Receive your grade level & section assignment\n5️⃣ Get your student ID and schedule — you're in!",
+      b: "Here's the SIHS enrollment process:\n\n1️⃣ Visit the Registrar's Office & get a form\n2️⃣ Fill out the form and attach your requirements\n3️⃣ Submit to the Registrar for assessment\n4️⃣ Receive your grade level & section assignment — you're in!",
       c: [
         { l: "📄 What do I need?",  n: "enroll_reqs"  },
         { l: "📅 When to enroll?",  n: "enroll_when"  },
@@ -676,7 +668,7 @@
     },
 
     enroll_when: {
-      b: "📅 SIHS Enrollment Schedule:\n\n• Grade 7 (incoming): April 15 – May 15\n• Grade 8–12 (returning): May 1 – May 31\n• Late enrollment: June 1 – June 10 (valid reason required)\n\n⚠️ Enroll early for better section options!",
+      b: "📅 SIHS Enrollment Schedule:\n\n• Grade 7 (incoming): IDK PA PO\n• Grade 8–12 (returning): IDK PA PO\n\n⚠️ Enroll early for better section options!",
       c: [
         { l: "📄 Requirements",    n: "enroll_reqs"  },
         { l: "📝 See the process", n: "enroll_steps" },
@@ -685,7 +677,7 @@
     },
 
 
-    /* ── Schedules ── */
+
     schedule_menu: {
       b: "SIHS schedules differ between Junior High (Grades 7–10) and Senior High (Grades 11–12). Which would you like to see?",
       c: [
@@ -745,35 +737,35 @@
     },
 
     strand_stem: {
-      b: "🔬 STEM — Science, Technology, Engineering & Mathematics\n\n• Pre-Calculus / Basic Calculus\n• General Physics 1 & 2\n• General Chemistry 1 & 2\n• General Biology 1 & 2\n• Earth & Life Science\n• Research / Practical Research\n• Oral Communication & Reading & Writing\n• 21st Century Literature\n• Media & Information Literacy\n• Personal Development\n• Understanding Culture, Society & Politics\n• Contemporary Philippine Arts",
+      b: "🔬 STEM — Science, Technology, Engineering & Mathematics\n\n Idk pa po",
       c: [
         { l: "← Back to strands", n: "subjects_shs", bk: 1 }
       ]
     },
 
     strand_abm: {
-      b: "💼 ABM — Accountancy, Business & Management\n\n• Business Mathematics\n• Business Finance\n• Fundamentals of ABM 1 & 2\n• Applied Economics\n• Organization & Management\n• Principles of Marketing\n• Research / Practical Research\n• Oral Communication & Reading & Writing\n• 21st Century Literature\n• Media & Information Literacy\n• Personal Development\n• Understanding Culture, Society & Politics\n• Contemporary Philippine Arts",
+      b: "💼 ABM — Accountancy, Business & Management\n\n Idk pa po",
       c: [
         { l: "← Back to strands", n: "subjects_shs", bk: 1 }
       ]
     },
 
     strand_humss: {
-      b: "📖 HUMSS — Humanities & Social Sciences\n\n• Creative Writing / Malikhaing Pagsulat\n• Introduction to World Religions & Belief Systems\n• Disciplines & Ideas in the Social Sciences\n• Disciplines & Ideas in the Applied Social Sciences\n• Philippine Politics & Governance\n• Community Engagement, Solidarity & Citizenship\n• Research / Practical Research\n• Oral Communication & Reading & Writing\n• 21st Century Literature\n• Media & Information Literacy\n• Personal Development\n• Understanding Culture, Society & Politics\n• Contemporary Philippine Arts",
+      b: "📖 HUMSS — Humanities & Social Sciences\n\n Idk pa po",
       c: [
         { l: "← Back to strands", n: "subjects_shs", bk: 1 }
       ]
     },
 
     strand_gas: {
-      b: "🎓 GAS — General Academic Strand\n\n• Humanities 1 & 2\n• Social Science 1\n• Applied Economics\n• Organization & Management\n• Disaster Readiness & Risk Reduction\n• Research / Practical Research\n• Oral Communication & Reading & Writing\n• 21st Century Literature\n• Media & Information Literacy\n• Personal Development\n• Understanding Culture, Society & Politics\n• Contemporary Philippine Arts",
+      b: "🎓 GAS — General Academic Strand\n\n• Humanities 1 & 2\n• Idk pa po",
       c: [
         { l: "← Back to strands", n: "subjects_shs", bk: 1 }
       ]
     },
 
     strand_tvl: {
-      b: "🔧 TVL — Technical-Vocational-Livelihood\n\n• Specialization track subject\n  (e.g. ICT, HE, IA, Agri-Fishery)\n• Work Immersion\n• Research / Practical Research\n• Oral Communication & Reading & Writing\n• 21st Century Literature\n• Media & Information Literacy\n• Personal Development\n• Understanding Culture, Society & Politics\n• Contemporary Philippine Arts\n\n💡 Specific courses depend on your enrolled track.",
+      b: "🔧 TVL — Technical-Vocational-Livelihood\n\n• Specialization track subject\n  ( ICT, SMAW, Cookery, Mekanito ata )\n• Work Immersion\n• Research / Practical Research\n• Oral Communication & Reading & Writing\n• 21st Century Literature\n• Media & Information Literacy\n• Personal Development\n• Understanding Culture, Society & Politics\n• Contemporary Philippine Arts\n\n💡 Specific courses depend on your enrolled track.",
       c: [
         { l: "← Back to strands", n: "subjects_shs", bk: 1 }
       ]
@@ -788,7 +780,7 @@
     },
 
 
-    /* ── Facilities ── */
+
     facilities_menu: {
       b: "SIHS has several facilities available to all students. Which area do you want to explore?",
       c: [
@@ -833,7 +825,7 @@
     },
 
 
-    /* ── Services ── */
+
     services_menu: {
       b: "SIHS offers student services and organizations to help you thrive. What would you like to know?",
       c: [
@@ -860,7 +852,6 @@
     },
 
 
-    /* ── FAQs ── */
     faq_menu: {
       b: "Here are some common questions about SIHS. What do you want to know?",
       c: [
@@ -895,12 +886,10 @@
       ]
     }
 
-  }; /* end T */
+  }; 
 
 
-  /* ══════════════════════════════════════════
-     AI SYSTEM PROMPT
-  ══════════════════════════════════════════ */
+
   var SYS =
     "You are a helpful assistant for Sinalhan Integrated High School (SIHS) in Sinalhan, Santa Rosa, Laguna. " +
     "Answer questions about: " +
@@ -915,16 +904,12 @@
     "Be friendly and concise.";
 
 
-  /* ══════════════════════════════════════════
-     STATE
-  ══════════════════════════════════════════ */
+
   var visited = new Set();
   var mode = 'guide';
 
 
-  /* ══════════════════════════════════════════
-     NAVIGATION
-  ══════════════════════════════════════════ */
+
   function goHome() {
     document.getElementById('game').style.display    = 'none';
     document.getElementById('welcome').style.display = 'block';
@@ -944,7 +929,7 @@
     document.getElementById('game').style.display    = 'flex';
 
     if (node === 'start') {
-      // Full info guide — reset then show topic cards
+      
       document.getElementById('chatbox').innerHTML  = '';
       document.getElementById('choices').innerHTML  = '';
       document.getElementById('choices').className  = '';
@@ -990,9 +975,7 @@
   }
 
 
-  /* ══════════════════════════════════════════
-     PROGRESS BAR
-  ══════════════════════════════════════════ */
+
   function updateProg(key) {
     visited.add(key);
     var total = Object.keys(LABELS).length;
@@ -1003,9 +986,7 @@
   }
 
 
-  /* ══════════════════════════════════════════
-     CHAT HELPERS
-  ══════════════════════════════════════════ */
+
   function addBot(text) {
     var box = document.getElementById('chatbox');
     var d  = document.createElement('div'); d.className = 'msg bot';
@@ -1045,9 +1026,7 @@
   }
 
 
-  /* ══════════════════════════════════════════
-     CHOICE BUTTONS
-  ══════════════════════════════════════════ */
+
   function showChoices(choices) {
     var c = document.getElementById('choices');
     c.innerHTML  = '';
@@ -1111,9 +1090,7 @@
   }
 
 
-  /* ══════════════════════════════════════════
-     ASK MODE — AI API CALL
-  ══════════════════════════════════════════ */
+
   async function sendQ() {
     var inp = document.getElementById('askinput');
     var btn = document.getElementById('asksend');
@@ -1152,9 +1129,7 @@
   }
 
 
-  /* ══════════════════════════════════════════
-     INIT
-  ══════════════════════════════════════════ */
+
   document.addEventListener('DOMContentLoaded', function () {
 
     // Enter key to send in Ask mode
