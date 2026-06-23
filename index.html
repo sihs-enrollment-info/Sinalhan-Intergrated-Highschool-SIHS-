@@ -105,7 +105,7 @@
       padding: 4px 14px;
     }
 
- 
+
     .stats {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -125,7 +125,7 @@
     .stat .lbl { font-size: 10px; color: #85B7EB; margin-bottom: 2px; }
     .stat .val { font-size: 13px; font-weight: 700; color: #E6F1FB; }
 
-  
+
     .section-label {
       font-size: 11px;
       font-weight: 700;
@@ -199,7 +199,7 @@
       padding: env(safe-area-inset-top, 0px) 0 env(safe-area-inset-bottom, 0px);
     }
 
-  
+
     .ghead {
       background: #042C53;
       padding: 10px 14px;
@@ -303,7 +303,7 @@
       transition: width 0.4s;
     }
 
-   
+
     #chatbox {
       flex: 1;
       overflow-y: auto;
@@ -610,11 +610,12 @@
     enroll_when        : 'Enrollment dates',
     schedule_menu      : 'Schedules',
     schedule_jhs       : 'Grades 7–10 Schedule',
-    schedule_shs       : 'Grades 11 Schedule',
+    schedule_shs       : 'Grade 11 Schedule',
     schedule_shs12     : 'Grade 12 Schedule',
     schedule_subjects  : 'Subjects',
     subjects_jhs       : 'JHS Subjects',
-    subjects_shs       : 'SHS Strands',
+    subjects_shs11     : 'Grade 11 Subjects',
+    subjects_shs12     : 'Grade 12 Subjects',
     strand_stem        : 'STEM',
     strand_abm         : 'ABM',
     strand_humss       : 'HUMSS',
@@ -683,8 +684,9 @@
       b: "SIHS schedules differ between Junior High (Grades 7–10) and Senior High (Grades 11–12). Which would you like to see?",
       c: [
         { l: "📗 Grades 7–10 schedule",   n: "schedule_jhs"      },
-        { l: "📘 Grades 11–12 schedule",  n: "schedule_shs"      },
-        { l: "📚 Subjects per grade",      n: "schedule_subjects" },
+        { l: "📘 Grade 11 schedule",      n: "schedule_shs"      },
+        { l: "📘 Grade 12 schedule",      n: "schedule_shs12"     },
+        { l: "📚 Subjects per grade",      n: "schedule_subjects"  },
         { l: "🏃 PE and MAPEH info",       n: "schedule_pe"       },
         { l: "← Back to main menu",       n: "start", bk: 1      }
       ]
@@ -693,29 +695,30 @@
     schedule_jhs: {
       b: "📗 GRADES 7–10 DAILY SCHEDULE\nEach period = 45 minutes\n\n6:45 AM — Flag ceremony & homeroom\n7:00 AM — 1st period\n7:45 AM — 2nd period\n8:30 AM — 3rd period\n9:15 AM — 4th period  (RECESS – 30 mins)\n9:45 AM — 5th period\n10:30 AM — 6th period\n11:15 AM — 7th period\n12:00 PM — 8th period  (LUNCH – 45 mins)\n12:45 PM — 9th period\n1:30 PM — 10th period\n2:15 PM — End of classes",
       c: [
-        { l: "📘 See Grades 11 schedule", n: "schedule_shs"      },
+        { l: "📘 See Grade 11 schedule", n: "schedule_shs"      },
+        { l: "📘 See Grade 12 schedule", n: "schedule_shs12"    },
         { l: "📚 Subjects",                  n: "schedule_subjects" },
         { l: "← Back",                       n: "schedule_menu", bk: 1 }
       ]
     },
 
     schedule_shs: {
-      b: "📘 GRADES 11 DAILY SCHEDULE\nEach period = 1 hour\n\n6:45 AM — Flag ceremony & homeroom\n7:00 AM — 1st period\n8:00 AM — 2nd period\n9:00 AM — 3rd period  (RECESS – 30 mins)\n9:30 AM — 4th period\n10:30 AM — 5th period\n11:30 AM — 6th period  (LUNCH – 30 mins)\n12:00 PM — 7th period\n1:00 PM — 8th period\n2:00 PM — 9th period\n3:00 PM — End of classes",
+      b: "📘 GRADE 11 DAILY SCHEDULE\nEach period = 1 hour\n\n6:45 AM — Flag ceremony & homeroom\n7:00 AM — 1st period\n8:00 AM — 2nd period\n9:00 AM — 3rd period  (RECESS – 30 mins)\n9:30 AM — 4th period\n10:30 AM — 5th period\n11:30 AM — 6th period  (LUNCH – 30 mins)\n12:00 PM — 7th period\n1:00 PM — 8th period\n2:00 PM — 9th period\n3:00 PM — End of classes",
       c: [
         { l: "📗 See Grades 7–10 schedule", n: "schedule_jhs"      },
+        { l: "📘 See Grade 12 schedule",    n: "schedule_shs12"    },
         { l: "📚 Subjects",                 n: "schedule_subjects" },
         { l: "← Back",                      n: "schedule_menu", bk: 1 }
-        { l: "📘 See Grades 1 schedule", n: "schedule_shs12"      },
       ]
     },
 
      schedule_shs12: {
-      b: "📘 GRADES 12 DAILY SCHEDULE\nEach period = 1 hour\n\n6:45 AM — Flag ceremony & homeroom\n7:00 AM — 1st period\n8:15 AM — 2nd period\n9:30 AM — 3rd period  (RECESS – 30 mins)\n10:00 AM — 4th period\n11:15 AM — 5th period\n11:30 AM — 6th period  (LUNCH – 1 hours)\n1:30 PM — 7th period\n2:45 PM — 8th period\n4:00 PM — End of classes",
+      b: "📘 GRADE 12 DAILY SCHEDULE\nEach period = 1 hour\n\n6:45 AM — Flag ceremony & homeroom\n7:00 AM — 1st period\n8:15 AM — 2nd period\n9:30 AM — 3rd period  (RECESS – 30 mins)\n10:00 AM — 4th period\n11:15 AM — 5th period\n11:30 AM — 6th period  (LUNCH – 1 hour)\n1:30 PM — 7th period\n2:45 PM — 8th period\n4:00 PM — End of classes",
       c: [
         { l: "📗 See Grades 7–10 schedule", n: "schedule_jhs"      },
+        { l: "📘 See Grade 11 schedule",     n: "schedule_shs"      },
         { l: "📚 Subjects",                 n: "schedule_subjects" },
         { l: "← Back",                      n: "schedule_menu", bk: 1 }
-        { l: "📗 See Grades 11 schedule", n: "schedule_shs"      },
       ]
     },
 
@@ -723,7 +726,8 @@
       b: "📚 Which grade level's subjects would you like to see?",
       c: [
         { l: "📗 Grades 7–10 subjects",  n: "subjects_jhs"      },
-        { l: "📘 Grades 11–12 strands",  n: "subjects_shs"      },
+        { l: "📘 Grade 11 subjects",     n: "subjects_shs11"    },
+        { l: "📘 Grade 12 subjects",     n: "subjects_shs12"    },
         { l: "← Back",                   n: "schedule_menu", bk: 1 }
       ]
     },
@@ -731,13 +735,26 @@
     subjects_jhs: {
       b: "📗 GRADES 7–10 CORE SUBJECTS:\n\n• Filipino\n• English\n• Mathematics\n• Science\n• Araling Panlipunan (AP)\n• Edukasyon sa Pagpapakatao (EsP)\n• MAPEH (Music, Arts, PE, Health)\n• TLE (Technology & Livelihood Education)\n• Homeroom Guidance",
       c: [
-        { l: "📘 See SHS strands", n: "subjects_shs"         },
+        { l: "📘 See Grade 11 subjects", n: "subjects_shs11"     },
+        { l: "📘 See Grade 12 subjects", n: "subjects_shs12"     },
         { l: "← Back",            n: "schedule_subjects", bk: 1 }
       ]
     },
 
-    subjects_shs: {
-      b: "📘 GRADES 11–12 — Choose a strand to see its subjects:",
+    subjects_shs11: {
+      b: "📘 GRADE 11 — Choose a strand to see its subjects:",
+      c: [
+        { l: "🔬 STEM",   n: "strand_stem"  },
+        { l: "💼 ABM",    n: "strand_abm"   },
+        { l: "📖 HUMSS",  n: "strand_humss" },
+        { l: "🎓 GAS",    n: "strand_gas"   },
+        { l: "🔧 TVL",    n: "strand_tvl"   },
+        { l: "← Back",    n: "schedule_subjects", bk: 1 }
+      ]
+    },
+
+    subjects_shs12: {
+      b: "📘 GRADE 12 — Choose a strand to see its subjects:",
       c: [
         { l: "🔬 STEM",   n: "strand_stem"  },
         { l: "💼 ABM",    n: "strand_abm"   },
@@ -751,35 +768,35 @@
     strand_stem: {
       b: "🔬 STEM — Science, Technology, Engineering & Mathematics\n\n Idk pa po",
       c: [
-        { l: "← Back to strands", n: "subjects_shs", bk: 1 }
+        { l: "← Back to strands", n: "subjects_shs11", bk: 1 }
       ]
     },
 
     strand_abm: {
       b: "💼 ABM — Accountancy, Business & Management\n\n Idk pa po",
       c: [
-        { l: "← Back to strands", n: "subjects_shs", bk: 1 }
+        { l: "← Back to strands", n: "subjects_shs11", bk: 1 }
       ]
     },
 
     strand_humss: {
       b: "📖 HUMSS — Humanities & Social Sciences\n\n Idk pa po",
       c: [
-        { l: "← Back to strands", n: "subjects_shs", bk: 1 }
+        { l: "← Back to strands", n: "subjects_shs11", bk: 1 }
       ]
     },
 
     strand_gas: {
       b: "🎓 GAS — General Academic Strand\n\n• Humanities 1 & 2\n• Idk pa po",
       c: [
-        { l: "← Back to strands", n: "subjects_shs", bk: 1 }
+        { l: "← Back to strands", n: "subjects_shs11", bk: 1 }
       ]
     },
 
     strand_tvl: {
       b: "🔧 TVL — Technical-Vocational-Livelihood\n\n• Specialization track subject\n  ( ICT, SMAW, Cookery, Mekanito ata )\n\n💡 Specific courses depend on your enrolled track.",
       c: [
-        { l: "← Back to strands", n: "subjects_shs", bk: 1 }
+        { l: "← Back to strands", n: "subjects_shs11", bk: 1 }
       ]
     },
 
@@ -898,7 +915,7 @@
       ]
     }
 
-  }; 
+  };
 
 
 
@@ -941,7 +958,7 @@
     document.getElementById('game').style.display    = 'flex';
 
     if (node === 'start') {
-      
+
       document.getElementById('chatbox').innerHTML  = '';
       document.getElementById('choices').innerHTML  = '';
       document.getElementById('choices').className  = '';
@@ -1144,7 +1161,7 @@
 
   document.addEventListener('DOMContentLoaded', function () {
 
-    
+
     var inp = document.getElementById('askinput');
     if (inp) {
       inp.addEventListener('keydown', function (e) {
@@ -1152,13 +1169,13 @@
       });
     }
 
-    
+
     document.body.addEventListener('touchmove', function (e) {
       if (e.target.closest('#chatbox') || e.target.closest('#welcome')) return;
       e.preventDefault();
     }, { passive: false });
 
-    
+
     if (window.visualViewport) {
       window.visualViewport.addEventListener('resize', function () {
         document.getElementById('app').style.height = window.visualViewport.height + 'px';
