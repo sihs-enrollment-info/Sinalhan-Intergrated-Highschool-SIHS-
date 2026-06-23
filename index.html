@@ -610,7 +610,8 @@
     enroll_when        : 'Enrollment dates',
     schedule_menu      : 'Schedules',
     schedule_jhs       : 'Grades 7–10 Schedule',
-    schedule_shs       : 'Grades 11–12 Schedule',
+    schedule_shs       : 'Grades 11 Schedule',
+    schedule_shs12     : 'Grade 12 Schedule',
     schedule_subjects  : 'Subjects',
     subjects_jhs       : 'JHS Subjects',
     subjects_shs       : 'SHS Strands',
@@ -692,18 +693,29 @@
     schedule_jhs: {
       b: "📗 GRADES 7–10 DAILY SCHEDULE\nEach period = 45 minutes\n\n6:45 AM — Flag ceremony & homeroom\n7:00 AM — 1st period\n7:45 AM — 2nd period\n8:30 AM — 3rd period\n9:15 AM — 4th period  (RECESS – 30 mins)\n9:45 AM — 5th period\n10:30 AM — 6th period\n11:15 AM — 7th period\n12:00 PM — 8th period  (LUNCH – 45 mins)\n12:45 PM — 9th period\n1:30 PM — 10th period\n2:15 PM — End of classes",
       c: [
-        { l: "📘 See Grades 11–12 schedule", n: "schedule_shs"      },
+        { l: "📘 See Grades 11 schedule", n: "schedule_shs"      },
         { l: "📚 Subjects",                  n: "schedule_subjects" },
         { l: "← Back",                       n: "schedule_menu", bk: 1 }
       ]
     },
 
     schedule_shs: {
-      b: "📘 GRADES 11–12 DAILY SCHEDULE\nEach period = 1 hour\n\n6:45 AM — Flag ceremony & homeroom\n7:00 AM — 1st period\n8:00 AM — 2nd period\n9:00 AM — 3rd period  (RECESS – 30 mins)\n9:30 AM — 4th period\n10:30 AM — 5th period\n11:30 AM — 6th period  (LUNCH – 30 mins)\n12:00 PM — 7th period\n1:00 PM — 8th period\n2:00 PM — 9th period\n3:00 PM — End of classes",
+      b: "📘 GRADES 11 DAILY SCHEDULE\nEach period = 1 hour\n\n6:45 AM — Flag ceremony & homeroom\n7:00 AM — 1st period\n8:00 AM — 2nd period\n9:00 AM — 3rd period  (RECESS – 30 mins)\n9:30 AM — 4th period\n10:30 AM — 5th period\n11:30 AM — 6th period  (LUNCH – 30 mins)\n12:00 PM — 7th period\n1:00 PM — 8th period\n2:00 PM — 9th period\n3:00 PM — End of classes",
       c: [
         { l: "📗 See Grades 7–10 schedule", n: "schedule_jhs"      },
         { l: "📚 Subjects",                 n: "schedule_subjects" },
         { l: "← Back",                      n: "schedule_menu", bk: 1 }
+        { l: "📘 See Grades 1 schedule", n: "schedule_shs12"      },
+      ]
+    },
+
+     schedule_shs12: {
+      b: "📘 GRADES 12 DAILY SCHEDULE\nEach period = 1 hour\n\n6:45 AM — Flag ceremony & homeroom\n7:00 AM — 1st period\n8:15 AM — 2nd period\n9:30 AM — 3rd period  (RECESS – 30 mins)\n10:00 AM — 4th period\n11:15 AM — 5th period\n11:30 AM — 6th period  (LUNCH – 1 hours)\n1:30 PM — 7th period\n2:45 PM — 8th period\n4:00 PM — End of classes",
+      c: [
+        { l: "📗 See Grades 7–10 schedule", n: "schedule_jhs"      },
+        { l: "📚 Subjects",                 n: "schedule_subjects" },
+        { l: "← Back",                      n: "schedule_menu", bk: 1 }
+        { l: "📗 See Grades 11 schedule", n: "schedule_shs"      },
       ]
     },
 
