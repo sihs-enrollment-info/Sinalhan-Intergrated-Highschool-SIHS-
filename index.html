@@ -610,8 +610,7 @@
     enroll_when        : 'Enrollment dates',
     schedule_menu      : 'Schedules',
     schedule_jhs       : 'Grades 7–10 Schedule',
-    schedule_shs       : 'Grade 11 Schedule',
-    schedule_shs12     : 'Grade 12 Schedule',
+    schedule_shs       : 'Grade 11–12 Schedule',
     schedule_subjects  : 'Subjects',
     subjects_jhs       : 'JHS Subjects',
     subjects_shs11     : 'Grade 11 Subjects',
@@ -652,7 +651,7 @@
     },
 
     enroll_reqs: {
-      b: "To enroll at SIHS, you will need:\n\n✅ Form 137 (Report Card) from previous school\n✅ PSA Birth Certificate (original + photocopy)\n✅ Good Moral Certificate\n\nFor transferees, also bring a Certificate of Transfer.",
+      b: "To enroll at SIHS, you will need:\n\n✅ Form 138 (Report Card) from previous school\n✅ PSA Birth Certificate (original + photocopy)\n✅ Good Moral Certificate\n\nFor transferees, also bring a Certificate of Transfer.",
       c: [
         { l: "📝 See the process",  n: "enroll_steps" },
         { l: "📅 When to enroll",   n: "enroll_when"  },
@@ -684,8 +683,7 @@
       b: "SIHS schedules differ between Junior High (Grades 7–10) and Senior High (Grades 11–12). Which would you like to see?",
       c: [
         { l: "📗 Grades 7–10 schedule",   n: "schedule_jhs"      },
-        { l: "📘 Grade 11 schedule",      n: "schedule_shs"      },
-        { l: "📘 Grade 12 schedule",      n: "schedule_shs12"     },
+        { l: "📘 Grade 11–12 schedule",   n: "schedule_shs"      },
         { l: "📚 Subjects per grade",      n: "schedule_subjects"  },
         { l: "🏃 PE and MAPEH info",       n: "schedule_pe"       },
         { l: "← Back to main menu",       n: "start", bk: 1      }
@@ -695,28 +693,16 @@
     schedule_jhs: {
       b: "📗 GRADES 7–10 DAILY SCHEDULE\nEach period = 45 minutes\n\n6:45 AM — Flag ceremony & homeroom\n7:00 AM — 1st period\n7:45 AM — 2nd period\n8:30 AM — 3rd period\n9:15 AM — 4th period  (RECESS – 30 mins)\n9:45 AM — 5th period\n10:30 AM — 6th period\n11:15 AM — 7th period\n12:00 PM — 8th period  (LUNCH – 45 mins)\n12:45 PM — 9th period\n1:30 PM — 10th period\n2:15 PM — End of classes",
       c: [
-        { l: "📘 See Grade 11 schedule", n: "schedule_shs"      },
-        { l: "📘 See Grade 12 schedule", n: "schedule_shs12"    },
+        { l: "📘 See Grade 11–12 schedule", n: "schedule_shs"      },
         { l: "📚 Subjects",                  n: "schedule_subjects" },
         { l: "← Back",                       n: "schedule_menu", bk: 1 }
       ]
     },
 
     schedule_shs: {
-      b: "📘 GRADE 11 DAILY SCHEDULE\nEach period = 1 hour\n\n6:45 AM — Flag ceremony & homeroom\n7:00 AM — 1st period\n8:00 AM — 2nd period\n9:00 AM — 3rd period  (RECESS – 30 mins)\n9:30 AM — 4th period\n10:30 AM — 5th period\n11:30 AM — 6th period  (LUNCH – 30 mins)\n12:00 PM — 7th period\n1:00 PM — 8th period\n2:00 PM — 9th period\n3:00 PM — End of classes",
+      b: "📘 GRADE 11–12 DAILY SCHEDULE\nEach period = 1 hour\n\n6:45 AM — Flag ceremony & homeroom\n7:00 AM — 1st period\n8:15 AM — 2nd period\n9:30 AM — 3rd period  (RECESS – 30 mins)\n10:00 AM — 4th period\n11:15 AM — 5th period\n11:30 AM — 6th period  (LUNCH – 1 hour)\n1:30 PM — 7th period\n2:45 PM — 8th period\n3:00 PM — End of classes",
       c: [
         { l: "📗 See Grades 7–10 schedule", n: "schedule_jhs"      },
-        { l: "📘 See Grade 12 schedule",    n: "schedule_shs12"    },
-        { l: "📚 Subjects",                 n: "schedule_subjects" },
-        { l: "← Back",                      n: "schedule_menu", bk: 1 }
-      ]
-    },
-
-     schedule_shs12: {
-      b: "📘 GRADE 12 DAILY SCHEDULE\nEach period = 1 hour\n\n6:45 AM — Flag ceremony & homeroom\n7:00 AM — 1st period\n8:15 AM — 2nd period\n9:30 AM — 3rd period  (RECESS – 30 mins)\n10:00 AM — 4th period\n11:15 AM — 5th period\n11:30 AM — 6th period  (LUNCH – 1 hour)\n1:30 PM — 7th period\n2:45 PM — 8th period\n4:00 PM — End of classes",
-      c: [
-        { l: "📗 See Grades 7–10 schedule", n: "schedule_jhs"      },
-        { l: "📘 See Grade 11 schedule",     n: "schedule_shs"      },
         { l: "📚 Subjects",                 n: "schedule_subjects" },
         { l: "← Back",                      n: "schedule_menu", bk: 1 }
       ]
@@ -873,7 +859,7 @@
     },
 
     service_clubs: {
-      b: "🎨 SIHS Clubs & Organizations:\n\n📰 School Paper — journalism & writing\n🎭 Drama & Theater Club\n💻 Science & Technology Club\n⚽ Sports Teams — basketball, volleyball, chess\n🤝 Supreme Student Government (SSG)",
+      b: "🎨 SIHS Clubs & Organizations:\n\n📰 School Paper — journalism & writing\n🎭 Drama & Theater Club\n💻 Science & Technology Club\n⚽ Sports Teams — basketball, volleyball, chess\n🌱 BKD (Barkada Kontra Droga) — anti-drug peer group\n🤝 Supreme Student Government (SSG)",
       c: [
         { l: "← Back to services", n: "services_menu", bk: 1 },
         { l: "← Main menu",        n: "start", bk: 1         }
@@ -892,7 +878,7 @@
     },
 
     faq_hours: {
-      b: "🕖 SIHS School Hours:\n\n• Gates open: 6:15 - 7:00 AM\n• Flag ceremony: 6:45 AM (required for all!)\n• Classes start: 7:00 AM\n• Grades 7–10 end: 2:15 PM\n• Grades 11–12 end: 3:00 PM\n• School closes: 5:00 PM",
+      b: "🕖 SIHS School Hours:\n\n• Gates open: 6:15 - 7:00 AM\n• Flag ceremony: 6:45 AM (required for all!)\n• Classes start: 7:00 AM\n• Grades 7–10 end: 2:15 PM\n• Grades 11–12 end: 4:00 PM\n• School closes: 5:00 PM",
       c: [
         { l: "👕 Uniform policy", n: "faq_uniform" },
         { l: "← Back",           n: "faq_menu", bk: 1 }
@@ -922,13 +908,13 @@
   var SYS =
     "You are a helpful assistant for Sinalhan Integrated High School (SIHS) in Sinalhan, Santa Rosa, Laguna. " +
     "Answer questions about: " +
-    "Enrollment — Form 137, PSA Birth Certificate, Good Moral Certificate, 2x2 photos, Barangay Clearance; Grade 7: April 15–May 15; Grade 8–12: May 1–May 31. " +
+    "Enrollment — Form 138, PSA Birth Certificate, Good Moral Certificate, 2x2 photos, Barangay Clearance; Grade 7: April 15–May 15; Grade 8–12: May 1–May 31. " +
     "Schedules — GRADES 7–10: flag ceremony 6:45–7:00 AM, 10 periods of 45 minutes, 4th period recess (30 mins) at 9:15 AM, 8th period lunch (45 mins) at 12:00 PM, end 2:15 PM. " +
-    "GRADES 11–12: flag ceremony 6:45–7:00 AM, 9 periods of 1 hour, 3rd period recess (30 mins) at 9:00 AM, 6th period lunch (30 mins) at 11:30 AM, end 3:00 PM. " +
+    "GRADES 11–12 (same schedule): flag ceremony 6:45–7:00 AM, 8 periods of 1 hour to 1.25 hours, 3rd period recess (30 mins) at 9:30 AM, 6th period lunch (1 hour) at 11:30 AM, end 4:00 PM. " +
     "Subjects — Grades 7–10: Filipino, English, Math, Science, AP, EsP, MAPEH, TLE, Homeroom Guidance. " +
     "SHS strands — STEM: Calculus, Physics, Chemistry, Biology; ABM: Business Math, Finance, Marketing; HUMSS: Creative Writing, Social Sciences, Philippine Politics; GAS: Humanities, Social Science, Applied Economics; TVL: specialization track + Work Immersion. " +
     "Facilities — Library 7AM–3PM, Canteen 6:30AM–3PM ₱25–₱60, basketball court and volleyball court available. " +
-    "Services — Guidance Office open 7:30AM–3PM (Mon–Fri), clubs: School Paper, Drama & Theater, Science & Tech, Sports Teams, SSG. " +
+    "Services — Guidance Office open 7:30AM–3PM (Mon–Fri), clubs: School Paper, Drama & Theater, Science & Tech, Sports Teams, BKD (Barkada Kontra Droga - anti-drug peer group), SSG. " +
     "FAQs — gates open 5:45–6AM, Mon/Tue/Thu full uniform, Wed PE uniform, no colored hair or excessive accessories; 20% absences may result in being dropped; missed quizzes require make-up within 3 days or depending on the teacher. " +
     "Be friendly and concise.";
 
