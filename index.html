@@ -65,20 +65,24 @@
     }
 
     .logo {
-      width: 64px;
-      height: 64px;
+      width: 68px;
+      height: 68px;
       border-radius: 50%;
-      background: #185FA5;
+      background: #FFFFFF;
       border: 3px solid #378ADD;
       display: flex;
       align-items: center;
       justify-content: center;
       margin: 0 auto 10px;
-      font-size: 15px;
-      font-weight: 800;
-      color: #E6F1FB;
-      letter-spacing: 1px;
+      overflow: hidden;
       box-shadow: 0 0 0 6px rgba(55, 138, 221, 0.15);
+    }
+
+    .logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     .hero h1 {
@@ -233,15 +237,20 @@
       width: 34px;
       height: 34px;
       border-radius: 50%;
-      background: #185FA5;
+      background: #FFFFFF;
       border: 2px solid #378ADD;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 10px;
-      font-weight: 800;
-      color: #E6F1FB;
+      overflow: hidden;
       flex-shrink: 0;
+    }
+
+    .ghead-logo img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     .ghead-txt { flex: 1; min-width: 0; }
@@ -338,6 +347,14 @@
       background: #185FA5;
       color: #E6F1FB;
       border: 1px solid #378ADD;
+      overflow: hidden;
+    }
+
+    .av img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
     }
 
     .msg.user .av { background: #0C447C; font-size: 9px; }
@@ -473,41 +490,6 @@
     #asksend:active   { background: #0C447C; }
     #asksend:disabled { background: #1a2a3a; cursor: not-allowed; }
 
-    #mic {
-      background: #0C2E4A;
-      color: #E6F1FB;
-      border: 1px solid #185FA5;
-      border-radius: 50%;
-      width: 42px;
-      height: 42px;
-      font-size: 16px;
-      cursor: pointer;
-      flex-shrink: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: background 0.15s, border-color 0.15s;
-    }
-
-    #mic:active { background: #185FA5; }
-
-    #mic.rec {
-      background: #C0392B;
-      border-color: #E74C3C;
-      animation: micpulse 1.1s ease-in-out infinite;
-    }
-
-    #mic:disabled {
-      opacity: 0.35;
-      cursor: not-allowed;
-      animation: none;
-    }
-
-    @keyframes micpulse {
-      0%, 100% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.5); }
-      50%      { box-shadow: 0 0 0 7px rgba(231, 76, 60, 0); }
-    }
-
     .askhint {
       font-size: 11px;
       color: #85B7EB;
@@ -575,7 +557,7 @@
   <div id="welcome">
 
     <div class="hero">
-      <div class="logo">SC5</div>
+      <div class="logo"><img src="https://yt3.googleusercontent.com/_z8cFJq5RO4RJq9pT-dEpPR4N6feUB0qxRIvB0ozkowYVNX5Mu5moy9gOGZTTtI4TbB9Y9Gq4kU=s900-c-k-c0x00ffffff-no-rj" alt="SIHS SmartClass5 logo" /></div>
       <h1>SIHS SmartClass5</h1>
       <p>Sinalhan, Santa Rosa City, Laguna</p>
       <span class="badge">★ Excellence · Service · Integrity</span>
@@ -640,7 +622,7 @@
 
     <div class="ghead">
       <button class="back-home-btn" onclick="goHome()" aria-label="Back to home">←</button>
-      <div class="ghead-logo">SC5</div>
+      <div class="ghead-logo"><img src="https://yt3.googleusercontent.com/_z8cFJq5RO4RJq9pT-dEpPR4N6feUB0qxRIvB0ozkowYVNX5Mu5moy9gOGZTTtI4TbB9Y9Gq4kU=s900-c-k-c0x00ffffff-no-rj" alt="SIHS SmartClass5 logo" /></div>
       <div class="ghead-txt">
         <p>SIHS SmartClass5</p>
         <span>Sinalhan Integrated High School</span>
@@ -675,10 +657,9 @@
             maxlength="250"
             enterkeyhint="send"
           />
-          <button id="mic" onclick="toggleMic()" aria-label="Voice message">🎤</button>
           <button id="asksend" onclick="sendQ()" aria-label="Send">➤</button>
         </div>
-        <p class="askhint" id="askhint">💡 Try: "What do I need to enroll?" or "What clubs can I join?" · Tap 🎤 to ask by voice.</p>
+        <p class="askhint" id="askhint">💡 Try: "What do I need to enroll?" or "What clubs can I join?"</p>
       </div>
     </div>
 
@@ -1041,7 +1022,6 @@
 
 
   function goHome() {
-    if (recognizing && recognition) recognition.stop();
     if ('speechSynthesis' in window) window.speechSynthesis.cancel();
     document.getElementById('game').style.display    = 'none';
     document.getElementById('welcome').style.display = 'block';
@@ -1122,7 +1102,11 @@
   function addBot(text, suggestions) {
     var box = document.getElementById('chatbox');
     var d  = document.createElement('div'); d.className = 'msg bot';
-    var av = document.createElement('div'); av.className = 'av'; av.textContent = 'S';
+    var av = document.createElement('div'); av.className = 'av';
+    var avImg = document.createElement('img');
+    avImg.src = 'https://yt3.googleusercontent.com/_z8cFJq5RO4RJq9pT-dEpPR4N6feUB0qxRIvB0ozkowYVNX5Mu5moy9gOGZTTtI4TbB9Y9Gq4kU=s900-c-k-c0x00ffffff-no-rj';
+    avImg.alt = 'SIHS';
+    av.appendChild(avImg);
 
     var inner = document.createElement('div'); inner.className = 'bot-inner';
     var row   = document.createElement('div'); row.className   = 'bot-row';
@@ -1190,7 +1174,11 @@
   function addThinking() {
     var box = document.getElementById('chatbox');
     var d  = document.createElement('div'); d.className = 'msg think'; d.id = 'thinking';
-    var av = document.createElement('div'); av.className = 'av'; av.textContent = 'S';
+    var av = document.createElement('div'); av.className = 'av';
+    var avImg = document.createElement('img');
+    avImg.src = 'https://yt3.googleusercontent.com/_z8cFJq5RO4RJq9pT-dEpPR4N6feUB0qxRIvB0ozkowYVNX5Mu5moy9gOGZTTtI4TbB9Y9Gq4kU=s900-c-k-c0x00ffffff-no-rj';
+    avImg.alt = 'SIHS';
+    av.appendChild(avImg);
     var b  = document.createElement('div'); b.className  = 'bub'; b.textContent = 'Thinking…';
     d.appendChild(av);
     d.appendChild(b);
@@ -1269,63 +1257,10 @@
 
 
 
-  var recognition = null;
-  var recognizing = false;
-
-  function setupMic() {
-    var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
-    var micBtn  = document.getElementById('mic');
-    var hint    = document.getElementById('askhint');
-    if (!SR) {
-      if (micBtn) { micBtn.disabled = true; micBtn.title = 'Voice input not supported on this browser'; }
-      if (hint) hint.textContent = '💡 Try: "What do I need to enroll?" or "What clubs can I join?"';
-      return;
-    }
-    recognition = new SR();
-    recognition.lang           = 'en-US';
-    recognition.interimResults = false;
-    recognition.maxAlternatives = 1;
-
-    recognition.onstart = function () {
-      recognizing = true;
-      if (micBtn) micBtn.classList.add('rec');
-      if (hint) hint.textContent = '🎤 Listening… speak your question now.';
-    };
-
-    recognition.onresult = function (e) {
-      var transcript = e.results[0][0].transcript;
-      var inp = document.getElementById('askinput');
-      if (inp) inp.value = transcript;
-      sendQ();
-    };
-
-    recognition.onerror = function () {
-      if (hint) hint.textContent = '⚠️ Didn\'t catch that. Tap 🎤 to try again.';
-    };
-
-    recognition.onend = function () {
-      recognizing = false;
-      if (micBtn) micBtn.classList.remove('rec');
-      if (hint && hint.textContent.indexOf('Listening') !== -1) {
-        hint.textContent = '💡 Try: "What do I need to enroll?" or "What clubs can I join?" · Tap 🎤 to ask by voice.';
-      }
-    };
-  }
-
-  function toggleMic() {
-    if (!recognition) return;
-    if (recognizing) {
-      recognition.stop();
-    } else {
-      if ('speechSynthesis' in window) window.speechSynthesis.cancel();
-      try { recognition.start(); } catch (err) { /* already started */ }
-    }
-  }
-
   // TODO: replace with the school's real inbox once one is set up — this is a placeholder for now.
   var SUPPORT_EMAIL = 'smartclass5.help@sihs-example.edu.ph';
 
-  // Keyword → topic-node matcher for free-typed/voice questions in Ask mode.
+  // Keyword → topic-node matcher for free-typed questions in Ask mode.
   // Checked in order; the FIRST matching entry wins, so more specific
   // patterns (e.g. "enrollment requirements") are listed before the
   // more general ones (e.g. just "enroll").
@@ -1432,8 +1367,6 @@
         if (e.key === 'Enter') sendQ();
       });
     }
-
-    setupMic();
 
 
     document.body.addEventListener('touchmove', function (e) {
