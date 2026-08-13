@@ -473,12 +473,98 @@
     #asksend:active   { background: #0C447C; }
     #asksend:disabled { background: #1a2a3a; cursor: not-allowed; }
 
+    #mic {
+      background: #0C2E4A;
+      color: #E6F1FB;
+      border: 1px solid #185FA5;
+      border-radius: 50%;
+      width: 42px;
+      height: 42px;
+      font-size: 16px;
+      cursor: pointer;
+      flex-shrink: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: background 0.15s, border-color 0.15s;
+    }
+
+    #mic:active { background: #185FA5; }
+
+    #mic.rec {
+      background: #C0392B;
+      border-color: #E74C3C;
+      animation: micpulse 1.1s ease-in-out infinite;
+    }
+
+    #mic:disabled {
+      opacity: 0.35;
+      cursor: not-allowed;
+      animation: none;
+    }
+
+    @keyframes micpulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(231, 76, 60, 0.5); }
+      50%      { box-shadow: 0 0 0 7px rgba(231, 76, 60, 0); }
+    }
+
     .askhint {
       font-size: 11px;
       color: #85B7EB;
       margin-top: 7px;
       line-height: 1.4;
     }
+
+    .spk-btn {
+      background: transparent;
+      border: none;
+      color: #85B7EB;
+      font-size: 12px;
+      cursor: pointer;
+      padding: 2px 4px;
+      flex-shrink: 0;
+      align-self: flex-end;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+
+    .spk-btn:active { color: #E6F1FB; }
+    .spk-btn.playing { color: #378ADD; }
+
+    .bot-inner {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .bot-row {
+      display: flex;
+      align-items: flex-end;
+      gap: 4px;
+    }
+
+    .ask-suggestions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .asug-btn {
+      background: #0C2E4A;
+      border: 1px solid #185FA5;
+      border-radius: 999px;
+      padding: 6px 12px;
+      font-size: 11px;
+      color: #B5D4F4;
+      cursor: pointer;
+      -webkit-user-select: none;
+      user-select: none;
+      transition: background 0.12s;
+    }
+
+    .asug-btn:active { background: #185FA5; color: #E6F1FB; }
   </style>
 </head>
 
@@ -589,9 +675,10 @@
             maxlength="250"
             enterkeyhint="send"
           />
+          <button id="mic" onclick="toggleMic()" aria-label="Voice message">🎤</button>
           <button id="asksend" onclick="sendQ()" aria-label="Send">➤</button>
         </div>
-        <p class="askhint">💡 Try: "What do I need to enroll?" or "What clubs can I join?"</p>
+        <p class="askhint" id="askhint">💡 Try: "What do I need to enroll?" or "What clubs can I join?" · Tap 🎤 to ask by voice.</p>
       </div>
     </div>
 
@@ -927,6 +1014,10 @@
 
 
 
+  // NOTE: SYS is currently unused — Ask mode now answers only from the
+  // T topic data above (via matchIntent) so replies always match what's
+  // already on the site. Kept here in case AI-generated answers are
+  // turned back on later.
   var SYS =
     "You are a helpful assistant for Sinalhan Integrated High School (SIHS) in Sinalhan, Santa Rosa, Laguna, powered by SIHS SmartClass5. " +
     "Answer questions about: " +
@@ -950,6 +1041,8 @@
 
 
   function goHome() {
+    if (recognizing && recognition) recognition.stop();
+    if ('speechSynthesis' in window) window.speechSynthesis.cancel();
     document.getElementById('game').style.display    = 'none';
     document.getElementById('welcome').style.display = 'block';
     // Reset for next visit
@@ -1026,15 +1119,61 @@
 
 
 
-  function addBot(text) {
+  function addBot(text, suggestions) {
     var box = document.getElementById('chatbox');
     var d  = document.createElement('div'); d.className = 'msg bot';
     var av = document.createElement('div'); av.className = 'av'; av.textContent = 'S';
-    var b  = document.createElement('div'); b.className  = 'bub'; b.textContent = text;
+
+    var inner = document.createElement('div'); inner.className = 'bot-inner';
+    var row   = document.createElement('div'); row.className   = 'bot-row';
+    var b     = document.createElement('div'); b.className     = 'bub'; b.textContent = text;
+    row.appendChild(b);
+
+    if ('speechSynthesis' in window) {
+      var spk = document.createElement('button');
+      spk.className   = 'spk-btn';
+      spk.textContent = '🔊';
+      spk.setAttribute('aria-label', 'Play voice message');
+      spk.onclick = function () { speakText(text, spk); };
+      row.appendChild(spk);
+    }
+    inner.appendChild(row);
+
+    if (suggestions && suggestions.length) {
+      var chipRow = document.createElement('div');
+      chipRow.className = 'ask-suggestions';
+      suggestions.forEach(function (s) {
+        var chip = document.createElement('button');
+        chip.className   = 'asug-btn';
+        chip.textContent = s.l;
+        chip.onclick = function () {
+          addUser(s.l);
+          askShowNode(s.n);
+        };
+        chipRow.appendChild(chip);
+      });
+      inner.appendChild(chipRow);
+    }
+
     d.appendChild(av);
-    d.appendChild(b);
+    d.appendChild(inner);
     box.appendChild(d);
     box.scrollTop = box.scrollHeight;
+  }
+
+  function speakText(text, btn) {
+    if (!('speechSynthesis' in window)) return;
+    if (window.speechSynthesis.speaking) {
+      window.speechSynthesis.cancel();
+      document.querySelectorAll('.spk-btn.playing').forEach(function (el) { el.classList.remove('playing'); });
+      return;
+    }
+    var utter = new SpeechSynthesisUtterance(text);
+    utter.rate = 1;
+    utter.onstart = function () { if (btn) btn.classList.add('playing'); };
+    utter.onend   = function () { if (btn) btn.classList.remove('playing'); };
+    utter.onerror = function () { if (btn) btn.classList.remove('playing'); };
+    window.speechSynthesis.speak(utter);
   }
 
   function addUser(text) {
@@ -1130,7 +1269,133 @@
 
 
 
-  async function sendQ() {
+  var recognition = null;
+  var recognizing = false;
+
+  function setupMic() {
+    var SR = window.SpeechRecognition || window.webkitSpeechRecognition;
+    var micBtn  = document.getElementById('mic');
+    var hint    = document.getElementById('askhint');
+    if (!SR) {
+      if (micBtn) { micBtn.disabled = true; micBtn.title = 'Voice input not supported on this browser'; }
+      if (hint) hint.textContent = '💡 Try: "What do I need to enroll?" or "What clubs can I join?"';
+      return;
+    }
+    recognition = new SR();
+    recognition.lang           = 'en-US';
+    recognition.interimResults = false;
+    recognition.maxAlternatives = 1;
+
+    recognition.onstart = function () {
+      recognizing = true;
+      if (micBtn) micBtn.classList.add('rec');
+      if (hint) hint.textContent = '🎤 Listening… speak your question now.';
+    };
+
+    recognition.onresult = function (e) {
+      var transcript = e.results[0][0].transcript;
+      var inp = document.getElementById('askinput');
+      if (inp) inp.value = transcript;
+      sendQ();
+    };
+
+    recognition.onerror = function () {
+      if (hint) hint.textContent = '⚠️ Didn\'t catch that. Tap 🎤 to try again.';
+    };
+
+    recognition.onend = function () {
+      recognizing = false;
+      if (micBtn) micBtn.classList.remove('rec');
+      if (hint && hint.textContent.indexOf('Listening') !== -1) {
+        hint.textContent = '💡 Try: "What do I need to enroll?" or "What clubs can I join?" · Tap 🎤 to ask by voice.';
+      }
+    };
+  }
+
+  function toggleMic() {
+    if (!recognition) return;
+    if (recognizing) {
+      recognition.stop();
+    } else {
+      if ('speechSynthesis' in window) window.speechSynthesis.cancel();
+      try { recognition.start(); } catch (err) { /* already started */ }
+    }
+  }
+
+  // TODO: replace with the school's real inbox once one is set up — this is a placeholder for now.
+  var SUPPORT_EMAIL = 'smartclass5.help@sihs-example.edu.ph';
+
+  // Keyword → topic-node matcher for free-typed/voice questions in Ask mode.
+  // Checked in order; the FIRST matching entry wins, so more specific
+  // patterns (e.g. "enrollment requirements") are listed before the
+  // more general ones (e.g. just "enroll").
+  var INTENTS = [
+    // Enrollment
+    { key: 'enroll_reqs',  patterns: ['requirement', 'documents needed', 'what do i need', 'need to bring', 'what to bring'] },
+    { key: 'enroll_when',  patterns: ['when to enroll', 'when is enrollment', 'enrollment date', 'enrollment schedule', 'when can i enroll', 'when should i enroll'] },
+    { key: 'enroll_steps', patterns: ['how to enroll', 'how can i enroll', 'how do i enroll', 'enrollment process', 'enroll process', 'how to register', 'steps to enroll', 'paano mag-enroll'] },
+    { key: 'enroll_menu',  patterns: ['enroll', 'enrolment', 'enrollment', 'registration', 'transferee'] },
+
+    // Schedules & subjects
+    { key: 'schedule_jhs',    patterns: ['junior high schedule', 'jhs schedule', 'grade 7 schedule', 'grade 8 schedule', 'grade 9 schedule', 'grade 10 schedule'] },
+    { key: 'schedule_shs',    patterns: ['senior high schedule', 'shs schedule', 'grade 11 schedule', 'grade 12 schedule'] },
+    { key: 'schedule_pe',     patterns: ['pe schedule', 'pe uniform', 'mapeh'] },
+    { key: 'subjects_jhs',    patterns: ['junior high subject', 'jhs subject', 'grade 7 subject', 'grade 8 subject', 'grade 9 subject', 'grade 10 subject'] },
+    { key: 'subjects_shs11',  patterns: ['grade 11 subject', 'strand'] },
+    { key: 'subjects_shs12',  patterns: ['grade 12 subject'] },
+    { key: 'schedule_menu',   patterns: ['schedule', 'class hours', 'time table', 'timetable', 'subjects'] },
+
+    // Facilities
+    { key: 'facility_library', patterns: ['library', 'borrow book', 'books'] },
+    { key: 'facility_canteen', patterns: ['canteen', 'cafeteria', 'baon', 'food', 'meal'] },
+    { key: 'facility_gym',     patterns: ['court', 'gym', 'basketball', 'volleyball', 'sports facility'] },
+    { key: 'facility_offices', patterns: ['registrar', 'clinic', "principal's office", 'principal office', 'where is the office'] },
+    { key: 'facilities_menu',  patterns: ['facilit', 'campus'] },
+
+    // Services
+    { key: 'service_guidance', patterns: ['guidance', 'counsel', 'counselor', 'referral'] },
+    { key: 'service_clubs',    patterns: ['club', 'clubs', 'organization', 'org ', 'ssg', 'extracurricular'] },
+    { key: 'service_officers', patterns: ['officer', 'student council', 'class officer'] },
+    { key: 'services_menu',    patterns: ['service'] },
+
+    // FAQs
+    { key: 'faq_hours',   patterns: ['school hours', 'what time', 'gate open', 'flag ceremony', 'dismissal'] },
+    { key: 'faq_uniform', patterns: ['uniform', 'dress code', 'hair', 'accessories'] },
+    { key: 'faq_absent',  patterns: ['absent', 'absence', 'excuse letter', 'dropped', 'make-up quiz', 'makeup quiz'] }
+  ];
+
+  function matchIntent(q) {
+    var text = q.toLowerCase();
+    for (var i = 0; i < INTENTS.length; i++) {
+      var patterns = INTENTS[i].patterns;
+      for (var j = 0; j < patterns.length; j++) {
+        if (text.indexOf(patterns[j]) !== -1) return INTENTS[i].key;
+      }
+    }
+    return null;
+  }
+
+  // Renders a topic's own website text as the answer, plus tappable
+  // suggestion chips built from that same topic's related sub-topics —
+  // so the reply (and every suggestion after it) only ever comes from
+  // content that's already on the site.
+  function askSuggestionsFor(key) {
+    var node = T[key];
+    if (!node || !node.c) return [];
+    return node.c.filter(function (ch) { return ch.n !== 'start' && !ch.bk; });
+  }
+
+  function askShowNode(key) {
+    var node = T[key];
+    if (!node) return;
+    addThinking();
+    setTimeout(function () {
+      removeThinking();
+      addBot(node.b, askSuggestionsFor(key));
+    }, 300);
+  }
+
+  function sendQ() {
     var inp = document.getElementById('askinput');
     var btn = document.getElementById('asksend');
     var q   = inp.value.trim();
@@ -1141,30 +1406,19 @@
     btn.disabled = true;
     addThinking();
 
-    try {
-      var res = await fetch('https://api.anthropic.com/v1/messages', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          model      : 'claude-sonnet-4-20250514',
-          max_tokens : 1000,
-          system     : SYS,
-          messages   : [{ role: 'user', content: q }]
-        })
-      });
-      var data = await res.json();
-      removeThinking();
-      addBot(
-        data.content && data.content[0]
-          ? data.content[0].text
-          : "Sorry, I couldn't find an answer. Please visit the SIHS office for help!"
-      );
-    } catch (e) {
-      removeThinking();
-      addBot("Oops! I'm having trouble connecting. Please try again or visit the school office.");
-    }
+    // Only ever answer using text that is already on the site (the same
+    // content shown in the Guide menus) — never anything made up.
+    var matchedKey = matchIntent(q);
 
-    btn.disabled = false;
+    setTimeout(function () {
+      removeThinking();
+      if (matchedKey && T[matchedKey]) {
+        addBot(T[matchedKey].b, askSuggestionsFor(matchedKey));
+      } else {
+        addBot("Sorry, I don't have that on the site yet. Please send your question to " + SUPPORT_EMAIL + " and we'll get back to you, or visit the school office.");
+      }
+      btn.disabled = false;
+    }, 350);
   }
 
 
@@ -1178,6 +1432,8 @@
         if (e.key === 'Enter') sendQ();
       });
     }
+
+    setupMic();
 
 
     document.body.addEventListener('touchmove', function (e) {
