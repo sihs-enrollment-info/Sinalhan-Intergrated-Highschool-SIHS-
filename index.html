@@ -6,7 +6,7 @@
   <meta name="mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-capable" content="yes" />
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="theme-color" content="#042C53" />
+  <meta name="theme-color" content="#211B33" />
   <title>SIHS SmartClass5</title>
 
   <style>
@@ -25,8 +25,8 @@
 
     body {
       font-family: -apple-system, 'Helvetica Neue', Arial, sans-serif;
-      background: #031B30;
-      color: #E6F1FB;
+      background: linear-gradient(160deg, #1E1733 0%, #140D20 100%);
+      color: #FBF6EA;
       height: 100%;
       height: -webkit-fill-available;
       overflow: hidden;
@@ -43,7 +43,7 @@
       height: 100dvh;
       height: 100vh;
       overflow: hidden;
-      background: #031B30;
+      background: linear-gradient(160deg, #1E1733 0%, #140D20 100%);
     }
 
 
@@ -55,7 +55,7 @@
     }
 
     .hero {
-      background: linear-gradient(160deg, #042C53 0%, #0A3D6E 100%);
+      background: linear-gradient(160deg, #2B2247 0%, #453A66 100%);
       border-radius: 18px;
       padding: 22px 16px 18px;
       text-align: center;
@@ -69,13 +69,13 @@
       height: 68px;
       border-radius: 50%;
       background: #FFFFFF;
-      border: 3px solid #378ADD;
+      border: 3px solid #FFC94D;
       display: flex;
       align-items: center;
       justify-content: center;
       margin: 0 auto 10px;
       overflow: hidden;
-      box-shadow: 0 0 0 6px rgba(55, 138, 221, 0.15);
+      box-shadow: 0 0 0 6px rgba(255, 201, 77, 0.25);
     }
 
     .logo img {
@@ -88,23 +88,23 @@
     .hero h1 {
       font-size: 17px;
       font-weight: 700;
-      color: #E6F1FB;
+      color: #FBF6EA;
       margin-bottom: 3px;
       line-height: 1.3;
     }
 
     .hero p {
       font-size: 12px;
-      color: #85B7EB;
+      color: #D8C9A3;
       margin-bottom: 12px;
     }
 
     .badge {
       display: inline-block;
       font-size: 11px;
-      color: #B5D4F4;
-      background: rgba(12, 68, 124, 0.7);
-      border: 1px solid #185FA5;
+      color: #FFDD8A;
+      background: rgba(255, 201, 77, 0.14);
+      border: 1px solid #C79A3E;
       border-radius: 999px;
       padding: 4px 14px;
     }
@@ -118,22 +118,37 @@
     }
 
     .stat {
-      background: #0C2E4A;
-      border: 1px solid #185FA5;
+      background: #2A2440;
+      border: 1px solid #C79A3E;
       border-radius: 12px;
       padding: 12px 6px;
       text-align: center;
     }
 
-    .stat .ico { font-size: 18px; margin-bottom: 4px; }
-    .stat .lbl { font-size: 10px; color: #85B7EB; margin-bottom: 2px; }
-    .stat .val { font-size: 13px; font-weight: 700; color: #E6F1FB; }
+    .stat .ico-wrap {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 6px;
+      font-size: 16px;
+    }
+    .stat .lbl { font-size: 10px; color: #D8C9A3; margin-bottom: 2px; }
+    .stat .val { font-size: 13px; font-weight: 700; color: #FBF6EA; }
+
+    .accent-gold   { background: rgba(255, 201, 77, 0.18); border: 1px solid rgba(255, 201, 77, 0.55); }
+    .accent-blue   { background: rgba(90, 141, 238, 0.18); border: 1px solid rgba(90, 141, 238, 0.55); }
+    .accent-teal   { background: rgba(46, 196, 182, 0.18); border: 1px solid rgba(46, 196, 182, 0.55); }
+    .accent-red    { background: rgba(255, 95, 82, 0.18);  border: 1px solid rgba(255, 95, 82, 0.55); }
+    .accent-orange { background: rgba(255, 159, 69, 0.18); border: 1px solid rgba(255, 159, 69, 0.55); }
 
 
     .section-label {
       font-size: 11px;
       font-weight: 700;
-      color: #85B7EB;
+      color: #D8C9A3;
       text-transform: uppercase;
       letter-spacing: 0.07em;
       margin-bottom: 10px;
@@ -148,8 +163,8 @@
     }
 
     .tc {
-      background: #0C2E4A;
-      border: 1px solid #185FA5;
+      background: #2A2440;
+      border: 1px solid #C79A3E;
       border-radius: 14px;
       padding: 16px 10px;
       text-align: center;
@@ -161,17 +176,26 @@
 
     .tc:active {
       transform: scale(0.96);
-      background: #185FA5;
+      background: #E8A33D;
     }
 
-    .tc .ico  { font-size: 24px; margin-bottom: 6px; }
-    .tc .name { font-size: 13px; font-weight: 700; color: #E6F1FB; margin-bottom: 2px; }
-    .tc .desc { font-size: 11px; color: #85B7EB; }
+    .tc .ico-wrap {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 8px;
+      font-size: 20px;
+    }
+    .tc .name { font-size: 13px; font-weight: 700; color: #FBF6EA; margin-bottom: 2px; }
+    .tc .desc { font-size: 11px; color: #D8C9A3; }
 
 
     .start-btn {
-      background: linear-gradient(135deg, #185FA5, #1a74cc);
-      color: #E6F1FB;
+      background: linear-gradient(135deg, #C79A3E, #F2A93C);
+      color: #FBF6EA;
       border: none;
       border-radius: 12px;
       padding: 14px;
@@ -180,7 +204,7 @@
       cursor: pointer;
       width: 100%;
       margin-bottom: 8px;
-      box-shadow: 0 4px 16px rgba(24, 95, 165, 0.4);
+      box-shadow: 0 4px 16px rgba(255, 201, 77, 0.45);
       -webkit-user-select: none;
       user-select: none;
     }
@@ -205,20 +229,20 @@
 
 
     .ghead {
-      background: #042C53;
+      background: #211B33;
       padding: 10px 14px;
       display: flex;
       align-items: center;
       gap: 8px;
       flex-shrink: 0;
-      border-bottom: 1px solid #185FA5;
+      border-bottom: 1px solid #C79A3E;
     }
 
     .back-home-btn {
       background: rgba(255, 255, 255, 0.1);
       border: 1px solid rgba(255, 255, 255, 0.25);
       border-radius: 8px;
-      color: #B5D4F4;
+      color: #FFDD8A;
       font-size: 16px;
       width: 34px;
       height: 34px;
@@ -238,7 +262,7 @@
       height: 34px;
       border-radius: 50%;
       background: #FFFFFF;
-      border: 2px solid #378ADD;
+      border: 2px solid #FFC94D;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -258,13 +282,13 @@
     .ghead-txt p {
       font-size: 13px;
       font-weight: 700;
-      color: #E6F1FB;
+      color: #FBF6EA;
       white-space: nowrap;
       overflow: hidden;
       text-overflow: ellipsis;
     }
 
-    .ghead-txt span { font-size: 11px; color: #85B7EB; }
+    .ghead-txt span { font-size: 11px; color: #D8C9A3; }
 
     .mode-btns { display: flex; gap: 5px; flex-shrink: 0; }
 
@@ -272,7 +296,7 @@
       background: rgba(255, 255, 255, 0.1);
       border: 1px solid rgba(255, 255, 255, 0.25);
       border-radius: 999px;
-      color: #B5D4F4;
+      color: #FFDD8A;
       font-size: 11px;
       padding: 6px 12px;
       cursor: pointer;
@@ -282,8 +306,8 @@
     }
 
     .mbtn.on {
-      background: #E6F1FB;
-      color: #042C53;
+      background: #FBF6EA;
+      color: #211B33;
       font-weight: 700;
     }
 
@@ -296,18 +320,18 @@
       margin-bottom: 4px;
     }
 
-    .prog-row span { font-size: 11px; color: #85B7EB; }
+    .prog-row span { font-size: 11px; color: #D8C9A3; }
 
     .pbar {
       height: 3px;
-      background: #0C2E4A;
+      background: #2A2440;
       border-radius: 999px;
       overflow: hidden;
     }
 
     .pfill {
       height: 100%;
-      background: #378ADD;
+      background: #FFC94D;
       border-radius: 999px;
       transition: width 0.4s;
     }
@@ -344,9 +368,9 @@
       justify-content: center;
       font-size: 11px;
       font-weight: 700;
-      background: #185FA5;
-      color: #E6F1FB;
-      border: 1px solid #378ADD;
+      background: #2A2440;
+      color: #FBF6EA;
+      border: 1px solid #FFC94D;
       overflow: hidden;
     }
 
@@ -357,7 +381,7 @@
       display: block;
     }
 
-    .msg.user .av { background: #0C447C; font-size: 9px; }
+    .msg.user .av { background: #B84334; font-size: 9px; }
 
     .bub {
       padding: 9px 13px;
@@ -368,22 +392,22 @@
     }
 
     .msg.bot .bub {
-      background: #0C2E4A;
-      border: 1px solid #185FA5;
-      color: #E6F1FB;
+      background: #2A2440;
+      border: 1px solid #C79A3E;
+      color: #FBF6EA;
       border-bottom-left-radius: 4px;
     }
 
     .msg.user .bub {
-      background: #185FA5;
-      color: #E6F1FB;
+      background: #FF5F52;
+      color: #FBF6EA;
       border-bottom-right-radius: 4px;
     }
 
     .msg.think .bub {
-      background: #0C2E4A;
-      border: 1px solid #185FA5;
-      color: #85B7EB;
+      background: #2A2440;
+      border: 1px solid #C79A3E;
+      color: #D8C9A3;
       font-style: italic;
       border-bottom-left-radius: 4px;
     }
@@ -392,8 +416,8 @@
     .bottom-zone {
       flex-shrink: 0;
       padding: 8px 12px 10px;
-      background: #031B30;
-      border-top: 1px solid #0C2E4A;
+      background: #171025;
+      border-top: 1px solid #2A2440;
     }
 
 
@@ -404,27 +428,27 @@
     }
 
     .cbtn {
-      background: #0C2E4A;
-      border: 1px solid #185FA5;
+      background: #2A2440;
+      border: 1px solid #C79A3E;
       border-radius: 999px;
       padding: 8px 14px;
       font-size: 12px;
-      color: #E6F1FB;
+      color: #FBF6EA;
       cursor: pointer;
       -webkit-user-select: none;
       user-select: none;
       transition: background 0.12s;
     }
 
-    .cbtn:active { background: #185FA5; }
+    .cbtn:active { background: #E8A33D; }
 
     .cbtn.back {
       background: transparent;
-      border-color: #2a4560;
-      color: #85B7EB;
+      border-color: #5C4A2E;
+      color: #D8C9A3;
     }
 
-    .cbtn.back:active { background: #0C2E4A; }
+    .cbtn.back:active { background: #2A2440; }
 
 
     #choices.start-grid {
@@ -441,12 +465,21 @@
       flex-direction: column;
       align-items: center;
       gap: 3px;
-      border-color: #185FA5;
+      border-color: #C79A3E;
     }
 
-    .card-ico { font-size: 22px; }
-    .card-lbl { font-size: 12px; font-weight: 700; color: #E6F1FB; }
-    .card-sub { font-size: 10px; color: #85B7EB; }
+    .card-ico {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 18px;
+      margin-bottom: 2px;
+    }
+    .card-lbl { font-size: 12px; font-weight: 700; color: #FBF6EA; }
+    .card-sub { font-size: 10px; color: #D8C9A3; }
 
 
     #askpanel { display: none; }
@@ -459,22 +492,22 @@
 
     #askinput {
       flex: 1;
-      background: #0C2E4A;
-      border: 1px solid #185FA5;
+      background: #2A2440;
+      border: 1px solid #C79A3E;
       border-radius: 999px;
       padding: 10px 16px;
       font-size: 14px;
-      color: #E6F1FB;
+      color: #FBF6EA;
       outline: none;
       -webkit-appearance: none;
     }
 
-    #askinput::placeholder { color: #85B7EB; }
-    #askinput:focus { border-color: #378ADD; }
+    #askinput::placeholder { color: #D8C9A3; }
+    #askinput:focus { border-color: #FFC94D; }
 
     #asksend {
-      background: #185FA5;
-      color: #E6F1FB;
+      background: #FF5F52;
+      color: #FBF6EA;
       border: none;
       border-radius: 50%;
       width: 42px;
@@ -487,12 +520,12 @@
       justify-content: center;
     }
 
-    #asksend:active   { background: #0C447C; }
-    #asksend:disabled { background: #1a2a3a; cursor: not-allowed; }
+    #asksend:active   { background: #B84334; }
+    #asksend:disabled { background: #332B45; cursor: not-allowed; }
 
     .askhint {
       font-size: 11px;
-      color: #85B7EB;
+      color: #D8C9A3;
       margin-top: 7px;
       line-height: 1.4;
     }
@@ -500,7 +533,7 @@
     .spk-btn {
       background: transparent;
       border: none;
-      color: #85B7EB;
+      color: #D8C9A3;
       font-size: 12px;
       cursor: pointer;
       padding: 2px 4px;
@@ -510,8 +543,8 @@
       user-select: none;
     }
 
-    .spk-btn:active { color: #E6F1FB; }
-    .spk-btn.playing { color: #378ADD; }
+    .spk-btn:active { color: #FBF6EA; }
+    .spk-btn.playing { color: #FFC94D; }
 
     .bot-inner {
       flex: 1;
@@ -534,19 +567,19 @@
     }
 
     .asug-btn {
-      background: #0C2E4A;
-      border: 1px solid #185FA5;
+      background: #2A2440;
+      border: 1px solid #C79A3E;
       border-radius: 999px;
       padding: 6px 12px;
       font-size: 11px;
-      color: #B5D4F4;
+      color: #FFDD8A;
       cursor: pointer;
       -webkit-user-select: none;
       user-select: none;
       transition: background 0.12s;
     }
 
-    .asug-btn:active { background: #185FA5; color: #E6F1FB; }
+    .asug-btn:active { background: #E8A33D; color: #FBF6EA; }
   </style>
 </head>
 
@@ -565,17 +598,17 @@
 
     <div class="stats">
       <div class="stat">
-        <div class="ico">🎓</div>
+        <div class="ico-wrap accent-gold">🎓</div>
         <div class="lbl">Students</div>
         <div class="val">Grade 7–12</div>
       </div>
       <div class="stat">
-        <div class="ico">🕖</div>
+        <div class="ico-wrap accent-blue">🕖</div>
         <div class="lbl">School hours</div>
         <div class="val">7AM–5PM</div>
       </div>
       <div class="stat">
-        <div class="ico">📍</div>
+        <div class="ico-wrap accent-teal">📍</div>
         <div class="lbl">Location</div>
         <div class="val">Santa Rosa</div>
       </div>
@@ -585,27 +618,27 @@
 
     <div class="topic-grid">
       <div class="tc" onclick="startGame('enroll_menu')">
-        <div class="ico">📋</div>
+        <div class="ico-wrap accent-gold">📋</div>
         <div class="name">Enrollment</div>
         <div class="desc">Steps & requirements</div>
       </div>
       <div class="tc" onclick="startGame('schedule_menu')">
-        <div class="ico">📅</div>
+        <div class="ico-wrap accent-blue">📅</div>
         <div class="name">Schedules</div>
         <div class="desc">Classes & subjects</div>
       </div>
       <div class="tc" onclick="startGame('facilities_menu')">
-        <div class="ico">🏫</div>
+        <div class="ico-wrap accent-teal">🏫</div>
         <div class="name">Facilities</div>
         <div class="desc">Campus areas</div>
       </div>
       <div class="tc" onclick="startGame('services_menu')">
-        <div class="ico">👥</div>
+        <div class="ico-wrap accent-red">👥</div>
         <div class="name">Services</div>
         <div class="desc">Clubs & guidance</div>
       </div>
       <div class="tc" onclick="startGame('faq_menu')" style="grid-column: span 2;">
-        <div class="ico">❓</div>
+        <div class="ico-wrap accent-orange">❓</div>
         <div class="name">FAQs</div>
         <div class="desc">Common questions answered</div>
       </div>
@@ -1228,11 +1261,11 @@
     c.className = 'start-grid';
 
     var items = [
-      { ico: '📋', lbl: 'Enrollment', sub: 'Steps & requirements', n: 'enroll_menu'     },
-      { ico: '📅', lbl: 'Schedules',  sub: 'JHS & SHS timetables', n: 'schedule_menu'   },
-      { ico: '🏫', lbl: 'Facilities', sub: 'Campus areas',          n: 'facilities_menu' },
-      { ico: '👥', lbl: 'Services',   sub: 'Clubs & guidance',      n: 'services_menu'   },
-      { ico: '❓', lbl: 'FAQs',       sub: 'Common questions',      n: 'faq_menu'        }
+      { ico: '📋', accent: 'accent-gold',   lbl: 'Enrollment', sub: 'Steps & requirements', n: 'enroll_menu'     },
+      { ico: '📅', accent: 'accent-blue',   lbl: 'Schedules',  sub: 'JHS & SHS timetables', n: 'schedule_menu'   },
+      { ico: '🏫', accent: 'accent-teal',   lbl: 'Facilities', sub: 'Campus areas',          n: 'facilities_menu' },
+      { ico: '👥', accent: 'accent-red',    lbl: 'Services',   sub: 'Clubs & guidance',      n: 'services_menu'   },
+      { ico: '❓', accent: 'accent-orange', lbl: 'FAQs',       sub: 'Common questions',      n: 'faq_menu'        }
     ];
 
     items.forEach(function (item, i) {
@@ -1242,7 +1275,7 @@
         btn.style.gridColumn = 'span 2';
       }
       btn.innerHTML =
-        '<span class="card-ico">' + item.ico + '</span>' +
+        '<span class="card-ico ' + item.accent + '">' + item.ico + '</span>' +
         '<span class="card-lbl">' + item.lbl + '</span>' +
         '<span class="card-sub">' + item.sub + '</span>';
       btn.onclick = function () {
